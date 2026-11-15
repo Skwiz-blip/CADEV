@@ -1,0 +1,25 @@
+# dépendances
+/node_modules
+
+# Next.js
+/.next/
+/out/
+/build
+/.dist
+next-env.d.ts
+*.tsbuildinfo
+
+# environnement (ne jamais versionner les clés)
+.env
+.env.*
+!.env.example
+
+# divers
+.DS_Store
+*.pem
+npm-debug.log*
+.vercel
+/coverage
+/tests/e2e/.captures
+/supabase/.temp
+/supabase/.branches

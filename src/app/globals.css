@@ -1,0 +1,255 @@
+@import "tailwindcss";
+
+/*
+ * DevBridge — système de design.
+ * Deux règles tenues partout : aucune bordure, aucun dégradé.
+ * Les surfaces se distinguent par leur teinte, l'espace et une ombre très légère.
+ */
+
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  /* Bleu nuit */
+  --color-ink: #101b36;
+  --color-ink-2: #1a2848;
+  --color-ink-3: #27375c;
+  /* Bleu principal */
+  --color-brand: #2457e8;
+  --color-brand-strong: #1b45c2;
+  --color-brand-soft: #e9effd;
+  /* Cyan : échanges, connexions, correspondances */
+  --color-flow: #28b8d5;
+  --color-flow-strong: #0a7890;
+  --color-flow-soft: #e1f5f9;
+  /* Surfaces */
+  --color-canvas: #f4f6fa;
+  --color-surface: #ffffff;
+  --color-field: #edf1f7;
+  --color-field-strong: #e0e6ef;
+  /* Texte secondaire */
+  --color-muted: #5b6b82;
+  --color-faint: #8d9bb0;
+  /* États */
+  --color-ok: #16a36a;
+  --color-ok-strong: #0b7448;
+  --color-ok-soft: #e3f5ed;
+  --color-warm: #f59e0b;
+  --color-warm-strong: #8f5404;
+  --color-warm-soft: #fef2d8;
+  --color-danger: #d92d20;
+  --color-danger-strong: #b01e13;
+  --color-danger-soft: #fdebe9;
+
+  --shadow-card: 0 1px 2px rgb(16 27 54 / 0.04), 0 12px 32px -20px rgb(16 27 54 / 0.2);
+  --shadow-lift: 0 2px 4px rgb(16 27 54 / 0.05), 0 22px 44px -22px rgb(16 27 54 / 0.3);
+  --shadow-pop: 0 4px 10px rgb(16 27 54 / 0.08), 0 30px 70px -26px rgb(16 27 54 / 0.45);
+
+  --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-fade: fade 0.25s ease-out both;
+  --animate-sheet: sheet 0.28s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-pop: pop 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  --animate-breathe: breathe 1.5s ease-in-out infinite;
+  --animate-drift: drift 7s ease-in-out infinite;
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes sheet {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes breathe {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+  @keyframes drift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-7px); }
+  }
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 0.5rem;
+  }
+
+  ::selection {
+    background-color: var(--color-brand);
+    color: #ffffff;
+  }
+
+  button, [role="button"], summary, label[for] {
+    cursor: pointer;
+  }
+
+  button:disabled, [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
+  /* Les champs natifs héritent de la police et n'ont jamais de contour par défaut. */
+  input, textarea, select, button {
+    font: inherit;
+    color: inherit;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    opacity: 0.55;
+    cursor: pointer;
+  }
+
+  textarea {
+    resize: vertical;
+  }
+}
+
+@layer components {
+  /* Champ de saisie : fond teinté, anneau bleu à la sélection, rouge en cas d'erreur. */
+  .field {
+    width: 100%;
+    min-height: 2.75rem;
+    border-radius: 0.75rem;
+    background-color: var(--color-field);
+    padding: 0.625rem 0.875rem;
+    font-size: 15px;
+    line-height: 1.4;
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    transition: background-color 0.15s ease, outline-color 0.15s ease;
+  }
+  .field::placeholder {
+    color: var(--color-faint);
+  }
+  .field:hover {
+    background-color: var(--color-field-strong);
+  }
+  .field:focus-visible {
+    background-color: var(--color-surface);
+    outline-color: var(--color-brand);
+    border-radius: 0.75rem;
+  }
+  .field[aria-invalid="true"] {
+    outline-color: var(--color-danger);
+  }
+  .field:disabled {
+    opacity: 0.6;
+  }
+
+  /* Squelette de chargement : une pulsation d'opacité, sans dégradé. */
+  .skeleton {
+    border-radius: 0.75rem;
+    background-color: var(--color-field-strong);
+    animation: var(--animate-breathe);
+  }
+
+  /* Défilement horizontal discret (onglets, tableaux sur mobile). */
+  .scroll-quiet {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .scroll-quiet::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Lien de texte. */
+  .link {
+    color: var(--color-brand);
+    font-weight: 500;
+    text-underline-offset: 3px;
+  }
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  /* Texte long saisi par les membres. */
+  .prose-user {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    line-height: 1.7;
+  }
+}
+
+/* Apparition au défilement : purement CSS, et sans effet si le navigateur ne la gère pas. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
+
+/* Lignes de connexion animées de l'illustration d'accueil. */
+.flow-line {
+  stroke-dasharray: 5 9;
+  animation: flow 1.6s linear infinite;
+}
+.flow-line-slow {
+  stroke-dasharray: 3 10;
+  animation: flow 3.2s linear infinite;
+}
+@keyframes flow {
+  to { stroke-dashoffset: -28; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Impression (attestation d'échange) : on ne garde que le document. */
+@media print {
+  body {
+    background-color: #ffffff;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-flat {
+    box-shadow: none !important;
+  }
+}
