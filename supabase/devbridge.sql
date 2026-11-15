@@ -7,8 +7,6 @@
 -- Utilisation : Supabase → SQL Editor → New query → coller ce fichier → Run.
 -- À exécuter UNE fois, sur un projet Supabase neuf et réservé à DevBridge.
 -- Tout s'exécute dans une transaction : en cas d'erreur, rien n'est appliqué.
-
-
 -- ═════════════════════════════════════════════════════════════════════════
 
 begin;
@@ -760,8 +758,9 @@ begin
 end;
 $$;
 
-drop trigger if exists devbridge_on_auth_user_created on auth.users;
-create trigger devbridge_on_auth_user_created
+-- « create or replace » : ne demande que le droit de poser un déclencheur sur
+-- auth.users (que Supabase accorde), pas d'en être propriétaire.
+create or replace trigger devbridge_on_auth_user_created
   after insert on auth.users
   for each row execute function private.handle_new_user();
 

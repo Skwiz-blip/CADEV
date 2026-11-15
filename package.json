@@ -16,6 +16,7 @@
     "test:e2e": "tsx tests/e2e/run.ts",
     "check": "npm run typecheck && npm run lint && npm run test",
     "db:bundle": "node scripts/bundle-sql.mjs",
+    "db:check": "node scripts/check-supabase.mjs",
     "seed": "tsx scripts/seed.ts",
     "seed:reset": "tsx scripts/seed.ts --reset",
     "seed:purge": "tsx scripts/seed.ts --purge",

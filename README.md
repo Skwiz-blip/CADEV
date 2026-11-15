@@ -171,6 +171,7 @@ Sans les variables Supabase, les pages vitrines s'affichent et les autres pages 
 | `npm test` | Tests de la base et de la logique (76 tests) |
 | `npm run test:e2e` | Parcours complet dans un navigateur (22 étapes) |
 | `npm run db:bundle` | Régénère `supabase/devbridge.sql` après modification d'une migration |
+| `npm run db:check` | Vérifie que le projet Supabase est prêt (script appliqué, accès fermés aux visiteurs) |
 | `npm run seed` | Crée ou recrée les données de démonstration |
 | `npm run seed:purge` | Supprime toutes les données de démonstration |
 | `npm run admin:grant -- personne@exemple.com` | Donne le rôle administrateur (`--revoke` pour le retirer) |
@@ -181,6 +182,7 @@ Sans les variables Supabase, les pages vitrines s'affichent et les autres pages 
 
 1. **Créer un projet** sur [supabase.com](https://supabase.com), réservé à DevBridge.
 2. **Créer la base** : *SQL Editor* → *New query* → coller le contenu de `supabase/devbridge.sql` → *Run*. Le script crée les tables, les fonctions, les règles d'accès, les deux espaces de fichiers, le catalogue de compétences, et active le temps réel sur les messages et les notifications. Il s'exécute dans une transaction : en cas d'erreur, rien n'est appliqué.
+   Vérifier ensuite avec `npm run db:check`.
 3. **Récupérer les clés** : *Project Settings* → *API*. L'adresse du projet et la clé publique (`anon` ou `publishable`) vont dans `NEXT_PUBLIC_SUPABASE_URL` et `NEXT_PUBLIC_SUPABASE_ANON_KEY` ; la clé secrète (`service_role` ou `secret`) dans `SUPABASE_SERVICE_ROLE_KEY`.
 4. **Configurer l'authentification** : *Authentication* → *URL Configuration* :
    - *Site URL* : l'adresse publique du site (par exemple `https://devbridge.vercel.app`).

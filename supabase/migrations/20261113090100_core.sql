@@ -359,8 +359,9 @@ begin
 end;
 $$;
 
-drop trigger if exists devbridge_on_auth_user_created on auth.users;
-create trigger devbridge_on_auth_user_created
+-- « create or replace » : ne demande que le droit de poser un déclencheur sur
+-- auth.users (que Supabase accorde), pas d'en être propriétaire.
+create or replace trigger devbridge_on_auth_user_created
   after insert on auth.users
   for each row execute function private.handle_new_user();
 
