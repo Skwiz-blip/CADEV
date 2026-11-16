@@ -21,5 +21,6 @@ npm-debug.log*
 .vercel
 /coverage
 /tests/e2e/.captures
+/video
 /supabase/.temp
 /supabase/.branches

@@ -39,12 +39,17 @@ export default function AboutPage() {
     <>
       <PageIntro
         eyebrow="À propos"
-        title="Construire la plateforme d'échange africaine, pour les devs, par les devs."
+        title="Le savoir est un baobab : personne ne peut l'embrasser seul."
         text="Partout sur le continent, des développeurs avancent seuls sur leurs projets. Ils butent sur une technologie qu'un autre maîtrise, et maîtrisent ce qu'un autre cherche à apprendre. DevBridge les met en relation."
       />
 
       <section className="px-4 pb-20 sm:px-6">
         <div className="mx-auto max-w-3xl space-y-5 text-lg text-ink/85">
+          <p>
+            Ce proverbe éwé, une langue parlée au Togo et au Ghana, dit qu&apos;il faut plusieurs bras pour faire le tour
+            d&apos;un baobab. Le savoir technique, c&apos;est pareil : personne ne maîtrise tout, mais à plusieurs, on
+            en fait le tour. C&apos;est l&apos;idée de DevBridge.
+          </p>
           <p>
             Les plateformes existantes permettent de publier, de discuter, de partager du code ou de présenter un
             profil. Elles n&apos;organisent pas ce qui manque le plus : <strong className="font-semibold text-ink">un

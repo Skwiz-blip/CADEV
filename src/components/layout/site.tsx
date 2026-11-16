@@ -36,9 +36,12 @@ export function SiteFooter() {
         <div>
           <Logo onDark />
           <p className="mt-4 max-w-xs text-sm text-white/70">{site.slogan}</p>
-          <p className="mt-4 max-w-xs text-sm text-white/55">
-            Une plateforme d&apos;échange de compétences, pour les développeurs africains, par les développeurs africains.
-          </p>
+          <figure className="mt-6 max-w-xs">
+            <blockquote className="text-sm font-medium text-white/85">
+              « Le savoir est un baobab : personne ne peut l&apos;embrasser seul. »
+            </blockquote>
+            <figcaption className="mt-1.5 text-xs text-white/50">Proverbe éwé</figcaption>
+          </figure>
         </div>
         <FooterColumn title="Plateforme">
           <FooterLink href="/explorer">Explorer les échanges</FooterLink>

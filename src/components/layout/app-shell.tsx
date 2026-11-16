@@ -94,7 +94,7 @@ export function AppShell({ viewer, children }: { viewer: Viewer; children: React
         </header>
 
         {profile.is_demo ? (
-          <div className="no-print mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          <div data-demo-banner className="no-print mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
             <p className="flex items-center gap-2.5 rounded-2xl bg-warm-soft px-4 py-3 text-sm text-warm-strong">
               <FlaskConical className="size-4 shrink-0" aria-hidden />
               <span>

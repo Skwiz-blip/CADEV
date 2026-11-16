@@ -30,7 +30,7 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
             ))}
           </ul>
         </div>
-        <p className="text-sm text-white/50">Pour les devs, par les devs · 54 pays d&apos;Afrique</p>
+        <p className="text-sm text-white/50">« Le savoir est un baobab : personne ne peut l&apos;embrasser seul. » Proverbe éwé</p>
       </aside>
 
       <main id="contenu" className="flex flex-col bg-surface px-5 py-8 sm:px-10">

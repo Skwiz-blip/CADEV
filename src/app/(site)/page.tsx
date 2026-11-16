@@ -162,7 +162,7 @@ export default function HomePage() {
         <div className="mx-auto grid grid-cols-1 max-w-6xl items-center gap-14 lg:grid-cols-[1.05fr_1fr] lg:gap-10">
           <div className="animate-rise">
             <Badge tone="brand" size="md">
-              Pour les devs, par les devs · 54 pays d&apos;Afrique
+              Entre développeurs africains · 54 pays
             </Badge>
             <h1 className="mt-6 text-[2.6rem] font-semibold leading-[1.05] text-ink sm:text-6xl lg:text-[3.9rem]">
               Les bonnes compétences méritent de se rencontrer.
